@@ -226,6 +226,13 @@ theorem Update.ne_id_ne_rtr_comm {σ σ₁ σ₂ σ₁₂ σ₂₁ : Reactor} {c
   σ₁₂ = σ₂₁ :=
   sorry
 
+-- Not really an update thing (so )
+theorem equal_ids {σ₁ σ₂ : Reactor} :
+   σ₁.ids = σ₂.ids →
+   (∀ i cmp v, σ₁ *[cmp:i]= v → σ₂ *[cmp:i]= v) →
+   σ₁ = σ₂ := by
+   sorry
+
 structure Mutation.rtrRel (cmp : Cmp) (cmpRel : (ID ▸ cmp.type) → (ID ▸ cmp.type) → Prop) (σ₁ σ₂ : Reactor) : Prop where
   eqCmps : ∀ cmp', (cmp' ≠ cmp) → σ₁.cmp cmp' = σ₂.cmp cmp'
   mutate : cmpRel (σ₁.cmp cmp) (σ₂.cmp cmp)
